@@ -1,0 +1,43 @@
+---
+internalName: index
+pageName: index
+---
+<html>
+
+<head>
+    {% set theJS %}
+    {% include 'index.js' %}
+    {% endset %}
+    <title>Quilljs Example</title>
+    <meta charset="UTF-8" />
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
+    <script>
+  //env var from the env var
+    var apiURL ="{{env.APIRURL}}";
+    var sonicApiURL = "{{env.SONICAPIURL}}";
+</script>
+</head>
+
+<body>
+    <!-- Include stylesheet -->
+    <!-- Create the editor container -->
+    <div>
+      <a href="#" id="savePost">Save Post</a>
+    </div>
+    <div id="debugDiv">
+    </div>
+    <div id="editor">
+    </div>
+    <!-- Include the Quill library -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <!-- Initialize Quill editor -->
+    <script>
+    var quill = new Quill("#editor", {
+        theme: "snow"
+    });
+    </script>
+    <script type="text/javascript">{{theJS  | safe}}</script>
+
+</body>
+
+</html>
